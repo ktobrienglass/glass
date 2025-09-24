@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stained Glass Art by Katie O'Brien</title>
+
+    <!-- Google Fonts: Merriweather for titles, Roboto for body/buttons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .top-panel {
+        background-color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+
+      .top-panel button {
+        background-color: white;
+        color: #36302a;
+        border: none;
+        padding: 10px 20px;
+        margin-right: 15px;
+        cursor: pointer;
+        font-family: "Roboto", sans-serif; /* ✅ clean sans-serif */
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .top-panel button:hover {
+        background-color: #36302a;
+        color: #f6f3ec;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif; /* ✅ body text */
+        background-color: #f6f3ec;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 60px; /* space for footer */
+      }
+
+      header {
+        background-color: #f6f3ec;
+        font-family: "Roboto", sans-serif;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        font-family: "Merriweather", serif; /* ✅ header font */
+        font-size: 2.8em;
+        color: #36302a;
+        padding: 40px;
+      }
+
+      p {
+        color: #36302a;
+        margin-top: 0px;
+      }
+
+      #header-2 {
+        margin-top: -30px;
+        margin-bottom: 30px;
+        font-family: "Roboto", sans-serif;
+      }
+
+      /* Gallery: horizontal row, centered */
+      .gallery {
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+        padding: 40px;
+        margin-bottom: 120px;
+      }
+
+      .gallery-item {
+        text-align: center;
+        max-width: 300px;
+      }
+
+      .gallery img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05);
+      }
+
+      .gallery a {
+        position: relative;
+        display: inline-block;
+      }
+
+      .gallery a::after {
+        content: "Click for more info";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(54, 48, 42, 0.8);
+        color: #fff;
+        padding: 6px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        text-align: center;
+      }
+
+      .gallery a:hover::after {
+        opacity: 1;
+      }
+
+      .image-title {
+        font-family: "Merriweather", serif; /* ✅ elegant serif */
+        font-weight: 700;
+        font-size: 18px; /* ✅ slightly larger for impact */
+        margin-top: 15px; /* ✅ more space from image */
+        margin-bottom: 30px; /* ✅ more space before footer */
+        color: #36302a;
+        text-align: center;
+      }
+
+      footer {
+        background-color: #36302a;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        z-index: 20;
+      }
+
+      footer p {
+        color: #ffffff;
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="top-panel">
+      <button
+        onclick="window.location.href='file:///Users/katieobrien/Documents/SheCd/Glass%20website/Glasswebsite3.html'"
+      >
+        Home
+      </button>
+      <button onclick="window.location.href='work.html'">Work</button>
+      <button onclick="window.location.href='about.html'">About</button>
+      <button onclick="window.location.href='contact.html'">Contact</button>
+    </div>
+
+    <header>
+      <h1>KATIE O'BRIEN</h1>
+      <p id="header-2">Artist Portfolio, Stained Glass</p>
+    </header>
+
+    <section class="gallery">
+      <div class="gallery-item">
+        <a href="artwork1.html">
+          <img
+            src="/Users/katieobrien/Documents/website images/Cat dances whilst you work.jpg"
+            alt="Stained Glass Artwork 1"
+          />
+        </a>
+        <div class="image-title">Cat Dances Whilst You Work</div>
+      </div>
+
+      <div class="gallery-item">
+        <a href="artwork2.html">
+          <img
+            src="/Users/katieobrien/Documents/website images/Pregnant with cat.jpg"
+            alt="Stained Glass Artwork 2"
+          />
+        </a>
+        <div class="image-title">Pregnant with Cat</div>
+      </div>
+
+      <div class="gallery-item">
+        <a href="artwork3.html">
+          <img
+            src="/Users/katieobrien/Documents/website images/Penfields Harmunculus.jpg"
+            alt="Stained Glass Artwork 3"
+          />
+        </a>
+        <div class="image-title">Penfield's Homunculus</div>
+      </div>
+    </section>
+
+    <footer id="site-footer">
+      <p>&copy; 2025 coded by Katie O'Brien. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work - Katie O'Brien</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .top-panel {
+        background-color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+
+      .top-panel button {
+        background-color: white;
+        color: #36302a;
+        border: none;
+        padding: 10px 20px;
+        margin-right: 15px;
+        cursor: pointer;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .top-panel button:hover {
+        background-color: #36302a;
+        color: #f6f3ec;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f6f3ec;
+        color: #36302a;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 60px;
+      }
+
+      header {
+        background-color: #f6f3ec;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        font-family: "Merriweather", serif;
+        font-size: 2.8em;
+        color: #36302a;
+        padding-top: 40px;
+        margin-bottom: 0;
+      }
+
+      h2 {
+        font-family: "Merriweather", serif;
+        font-size: 2em;
+        color: #36302a;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .intro-text {
+        padding: 0 20px;
+        max-width: 800px;
+        margin: 0 auto 20px;
+        text-align: center;
+        line-height: 1.6;
+      }
+
+      .about-link {
+        color: #800000;
+        text-decoration: none;
+      }
+
+      .about-link:hover {
+        color: hsl(0, 0%, 0%);
+      }
+
+      p {
+        color: #36302a;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .divider {
+        width: 60%;
+        margin: 50px auto;
+        border: 0;
+        height: 2px;
+        background: #800000;
+      }
+
+      /* Gallery grid - 3 images per row */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        justify-items: center;
+        padding: 20px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .gallery-item {
+        text-align: center;
+        max-width: 300px;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .gallery-item img:hover {
+        transform: scale(1.05);
+      }
+
+      .image-title {
+        font-family: "Merriweather", serif;
+        font-weight: 700;
+        font-size: 18px;
+        margin-top: 15px;
+        margin-bottom: 30px;
+        color: #36302a;
+        text-align: center;
+      }
+
+      footer {
+        background-color: #36302a;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        z-index: 20;
+      }
+
+      footer p {
+        color: #ffffff;
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <div class="top-panel">
+      <button onclick="window.location.href='index.html'">Home</button>
+      <button onclick="window.location.href='work.html'">Work</button>
+      <button onclick="window.location.href='about.html'">About</button>
+      <button onclick="window.location.href='contact.html'">Contact</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <h1>Work</h1>
+    </header>
+
+    <main>
+      <!-- Intro -->
+      <section>
+        <h2>Intro to My Work</h2>
+        <p class="intro-text">
+          I relay <strong>science in art</strong>, combining my Fine Art
+          training with my studies in psychology and neuroscience. I use stained
+          glass to explore ideas of perception, awe, and the way our minds shape
+          experience. For a deeper insight, visit my
+          <a href="about.html" class="about-link"><strong>About page</strong></a
+          >.
+        </p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Stained Glass -->
+      <section>
+        <h2>Stained Glass</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="/Users/katieobrien/Documents/website images/Cat dances whilst you work.jpg"
+              alt="Stained Glass 1"
+            />
+            <div class="image-title">Title 1</div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="/Users/katieobrien/Documents/website images/Pregnant with cat.jpg"
+              alt="Stained Glass 2"
+            />
+            <div class="image-title">Title 2</div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="/Users/katieobrien/Documents/website images/Penfields Harmunculus.jpg"
+              alt="Stained Glass 3"
+            />
+            <div class="image-title">Title 3</div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="/Users/katieobrien/Documents/website images/Skulls in your home.jpg"
+              alt="Stained Glass 4"
+            />
+            <div class="image-title">Title 4</div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="/Users/katieobrien/Documents/website images/Relience.jpg"
+              alt="Stained Glass 5"
+            />
+            <div class="image-title">Title 5</div>
+          </div>
+          <div class="gallery-item">
+            <img src="image here" alt="Stained Glass 6" />
+            <div class="image-title">Title 6</div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Paintings -->
+      <section>
+        <h2>Paintings</h2>
+        <p>
+          I hold a <strong>Fine Art Painting degree from UAL</strong>. Painting
+          allows me to explore shapes and colours freely, inspiring stained
+          glass designs before they take structured form in glass.
+        </p>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="your-painting1.jpg" alt="Painting 1" />
+            <div class="image-title">Painting 1</div>
+          </div>
+          <div class="gallery-item">
+            <img src="your-painting2.jpg" alt="Painting 2" />
+            <div class="image-title">Painting 2</div>
+          </div>
+          <div class="gallery-item">
+            <img src="your-painting3.jpg" alt="Painting 3" />
+            <div class="image-title">Painting 3</div>
+          </div>
+          <div class="gallery-item">
+            <img src="your-painting4.jpg" alt="Painting 4" />
+            <div class="image-title">Painting 4</div>
+          </div>
+          <div class="gallery-item">
+            <img src="your-painting5.jpg" alt="Painting 5" />
+            <div class="image-title">Painting 5</div>
+          </div>
+          <div class="gallery-item">
+            <img src="your-painting6.jpg" alt="Painting 6" />
+            <div class="image-title">Painting 6</div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Process -->
+      <section>
+        <h2>Process</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="process1.jpg" alt="Process 1" />
+            <div class="image-title">Step 1</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process2.jpg" alt="Process 2" />
+            <div class="image-title">Step 2</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process3.jpg" alt="Process 3" />
+            <div class="image-title">Step 3</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process4.jpg" alt="Process 4" />
+            <div class="image-title">Step 4</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process5.jpg" alt="Process 5" />
+            <div class="image-title">Step 5</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process6.jpg" alt="Process 6" />
+            <div class="image-title">Step 6</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process7.jpg" alt="Process 7" />
+            <div class="image-title">Step 7</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process8.jpg" alt="Process 8" />
+            <div class="image-title">Step 8</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process9.jpg" alt="Process 9" />
+            <div class="image-title">Step 9</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process10.jpg" alt="Process 10" />
+            <div class="image-title">Step 10</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process11.jpg" alt="Process 11" />
+            <div class="image-title">Step 11</div>
+          </div>
+          <div class="gallery-item">
+            <img src="process12.jpg" alt="Process 12" />
+            <div class="image-title">Step 12</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 coded by Katie O'Brien. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
