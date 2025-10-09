@@ -61,32 +61,33 @@
         font-size: 2.8em;
         color: #36302a;
         padding-top: 40px;
-        margin-bottom: 10px; /* reduced margin so image is closer */
+        margin-bottom: 20px;
       }
 
       main {
         max-width: 900px;
         margin: 0 auto;
-        padding: 80px 20px 60px; /* reduced top padding */
-        text-align: center;
+        padding: 80px 20px 60px;
       }
 
-      .contact-image {
+      /* Flex layout for image + email section */
+      .contact-container {
         display: flex;
+        align-items: center; /* vertically center text next to image */
         justify-content: center;
-        margin-top: -10px; /* moves image up closer to title */
-        margin-bottom: 20px; /* space between image and email */
+        gap: 40px;
+        flex-wrap: wrap; /* allows stacking on small screens */
       }
 
       .contact-image img {
         width: 100%;
-        max-width: 320px; /* reduced ~20% */
+        max-width: 320px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
       .email-section {
-        margin-top: 20px; /* slightly closer to image */
+        text-align: center;
       }
 
       .email-address {
@@ -135,6 +136,18 @@
         color: #ffffff;
         margin: 0;
       }
+
+      /* Mobile layout: stack vertically */
+      @media (max-width: 700px) {
+        .contact-container {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .email-address {
+          font-size: 1.4em;
+        }
+      }
     </style>
   </head>
 
@@ -152,17 +165,19 @@
     </header>
 
     <main>
-      <div class="contact-image">
-        <img src="images/Portrait2.jpg" alt="Stained glass artwork" />
-      </div>
-
-      <div class="email-section">
-        <div class="email-address" id="email">
-          katieobrienemail@gmail.com
+      <div class="contact-container">
+        <div class="contact-image">
+          <img src="images/Portrait2.jpg" alt="Stained glass artwork" />
         </div>
-        <button class="copy-button" onclick="copyEmail()">Copy Email</button>
-        <div class="copy-confirmation" id="confirmation">
-          Email copied to clipboard!
+
+        <div class="email-section">
+          <div class="email-address" id="email">
+            katieobrienemail@gmail.com
+          </div>
+          <button class="copy-button" onclick="copyEmail()">Copy Email</button>
+          <div class="copy-confirmation" id="confirmation">
+            Email copied to clipboard!
+          </div>
         </div>
       </div>
     </main>
