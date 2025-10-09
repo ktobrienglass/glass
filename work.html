@@ -12,6 +12,7 @@
     />
 
     <style>
+      /* ----------------------- Desktop Styles ----------------------- */
       .top-panel {
         background-color: white;
         position: fixed;
@@ -123,6 +124,7 @@
 
       .gallery-item img {
         width: 100%;
+        height: auto; /* preserve aspect ratio */
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
@@ -157,21 +159,64 @@
         color: #ffffff;
         margin: 0;
       }
+
+      /* ----------------------- Mobile Styles ----------------------- */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 2em;
+          padding-top: 30px;
+        }
+
+        h2 {
+          font-size: 1.5em;
+          margin-top: 20px;
+          margin-bottom: 15px;
+        }
+
+        .intro-text {
+          font-size: 0.9em;
+        }
+
+        .top-panel button {
+          padding: 8px 12px;
+          font-size: 14px;
+          margin-right: 10px;
+        }
+
+        /* Stack gallery images vertically but keep same size */
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          gap: 25px;
+          padding: 10px 20px;
+        }
+
+        .gallery-item {
+          max-width: 300px;
+          margin: 0 auto;
+        }
+
+        .image-title {
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 20px;
+        }
+
+        .divider {
+          width: 80%;
+          margin: 40px auto;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <!-- Navigation -->
-    
-      <div class="top-panel">
-  <button onclick="window.location.href='index.html'">Home</button>
-  <button onclick="window.location.href='work.html'">Work</button>
-  <button onclick="window.location.href='about.html'">About</button>
-  <button onclick="window.location.href='contact.html'">Contact</button>
-</div>
+    <div class="top-panel">
+      <button onclick="window.location.href='index.html'">Home</button>
+      <button onclick="window.location.href='work.html'">Work</button>
+      <button onclick="window.location.href='about.html'">About</button>
+      <button onclick="window.location.href='contact.html'">Contact</button>
+    </div>
 
-
-    <!-- Header -->
     <header>
       <h1>Work</h1>
     </header>
@@ -185,8 +230,7 @@
           training with my studies in psychology and neuroscience. I'm using stained
           glass to explore ideas of perception, awe, and the way our minds shape
           experience. But I also just like cats. For more info, visit my
-          <a href="about.html" class="about-link"><strong>About page</strong></a
-          >.
+          <a href="about.html" class="about-link"><strong>About page</strong></a>.
         </p>
       </section>
 
@@ -197,38 +241,23 @@
         <h2>Stained Glass</h2>
         <div class="gallery-grid">
           <div class="gallery-item">
-            <img
-              src="images/Cat dances whilst you work.jpg"
-              alt="Stained Glass 1"
-            />
+            <img src="images/Cat dances whilst you work.jpg" alt="Stained Glass 1" />
             <div class="image-title">Cat Dances Whilst you Work</div>
           </div>
           <div class="gallery-item">
-            <img
-              src="images/Pregnant with cat.jpg"
-              alt="Stained Glass 2"
-            />
+            <img src="images/Pregnant with cat.jpg" alt="Stained Glass 2" />
             <div class="image-title">A Bubble World</div>
           </div>
           <div class="gallery-item">
-            <img
-              src="images/Penfields Harmunculus.jpg"
-              alt="Stained Glass 3"
-            />
+            <img src="images/Penfields Harmunculus.jpg" alt="Stained Glass 3" />
             <div class="image-title">Penfields Harmunculus</div>
           </div>
           <div class="gallery-item">
-            <img
-              src="images/Skulls in your home.jpg"
-              alt="Stained Glass 4"
-            />
+            <img src="images/Skulls in your home.jpg" alt="Stained Glass 4" />
             <div class="image-title">Skulls in your Home</div>
           </div>
           <div class="gallery-item">
-            <img
-              src="images/Relience.jpg"
-              alt="Stained Glass 5"
-            />
+            <img src="images/Relience.jpg" alt="Stained Glass 5" />
             <div class="image-title">I've got your Back</div>
           </div>
           <div class="gallery-item">
@@ -334,7 +363,6 @@
       </section>
     </main>
 
-    <!-- Footer -->
     <footer>
       <p>&copy; 2025 coded by Katie O'Brien. All Rights Reserved.</p>
     </footer>
