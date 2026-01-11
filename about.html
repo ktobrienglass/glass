@@ -1,106 +1,151 @@
+<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About - Katie O'Brien</title>
+    <title>About | Katie O'Brien</title>
+    <meta
+      name="description"
+      content="About Katie O'Brien, a London-based stained glass artist exploring light, colour, perception, and awe through contemporary stained glass."
+    />
 
-    <!-- Google Fonts: Merriweather for titles, Roboto for body/buttons -->
     <link
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
     <style>
-      .top-panel {
-        background-color: white;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 10px 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 10;
+      :root {
+        --bg: #f6f3ec;
+        --ink: #36302a;
+        --panel: #ffffff;
+        --accent: #800000;
       }
 
-      .top-panel button {
-        background-color: white;
-        color: #36302a;
-        border: none;
-        padding: 10px 20px;
-        margin-right: 15px;
-        cursor: pointer;
-        font-family: "Roboto", sans-serif;
-        font-size: 16px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-      }
-
-      .top-panel button:hover {
-        background-color: #36302a;
-        color: #f6f3ec;
+      * {
+        box-sizing: border-box;
       }
 
       body {
         font-family: "Roboto", sans-serif;
-        background-color: #f6f3ec;
-        color: #36302a;
+        background-color: var(--bg);
+        color: var(--ink);
         margin: 0;
         padding: 0;
-        padding-bottom: 60px; /* space for footer */
+        padding-bottom: 70px;
+      }
+
+      .top-panel {
+        background-color: var(--panel);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 16px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .top-panel a {
+        display: inline-block;
+        text-decoration: none;
+        color: var(--ink);
+        padding: 10px 14px;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        border-radius: 8px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+
+      .top-panel a:hover {
+        background-color: var(--ink);
+        color: var(--bg);
+      }
+
+      .top-panel a[aria-current="page"] {
+        background-color: var(--ink);
+        color: var(--bg);
       }
 
       header {
-        background-color: #f6f3ec;
-        padding: 20px;
+        padding: 96px 20px 12px;
         text-align: center;
       }
 
       h1 {
         font-family: "Merriweather", serif;
-        font-size: 2.8em;
-        color: #36302a;
-        padding-top: 40px;
-        padding-bottom: 0px;
+        font-size: 2.6em;
+        margin: 0 0 6px;
+        letter-spacing: 0.5px;
+      }
+
+      main {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 10px 20px 30px;
+        text-align: center;
       }
 
       h2 {
         font-family: "Merriweather", serif;
-        font-size: 2em;
-        color: #36302a;
-        margin-top: 0px;
-        margin-bottom: 20px;
+        font-size: 1.9em;
+        margin: 24px 0 14px;
       }
 
       p {
-        color: #36302a;
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-
-      #header-2 {
-        margin-top: -30px;
-        margin-bottom: 30px;
-        font-family: "Roboto", sans-serif;
-      }
-
-      main {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 40px 20px;
-        text-align: center;
+        line-height: 1.7;
+        margin: 0 auto 16px;
+        max-width: 760px;
       }
 
       .divider {
         width: 60%;
-        margin: 50px auto;
+        margin: 42px auto;
         border: 0;
         height: 2px;
-        background: #800000; /* dark red divider */
+        background: var(--accent);
+      }
+
+      .about-image {
+        display: flex;
+        justify-content: center;
+        padding: 10px 20px 40px;
+      }
+
+      .gallery-item {
+        text-align: center;
+        max-width: 420px;
+        width: 100%;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        transition: transform 0.25s ease;
+        cursor: pointer;
+      }
+
+      .gallery-item img:hover {
+        transform: scale(1.03);
+      }
+
+      .image-title {
+        font-family: "Merriweather", serif;
+        font-weight: 700;
+        font-size: 18px;
+        margin-top: 14px;
+        margin-bottom: 8px;
       }
 
       footer {
-        background-color: #36302a;
+        background-color: var(--ink);
         text-align: center;
         padding: 10px;
         position: fixed;
@@ -109,54 +154,32 @@
         z-index: 20;
       }
 
-      .about-image {
-        display: flex;
-        justify-content: center;
-        padding: 10px;
-      }
-
-      .about-image .gallery-item {
-        text-align: center;
-        max-width: 400px; /* same as homepage for consistency */
-      }
-
-      .about-image img {
-        width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-        cursor: pointer;
-      }
-
-      .about-image img:hover {
-        transform: scale(1.05);
-      }
-
-      .about-image .image-title {
-        font-family: "Merriweather", serif;
-        font-weight: 700;
-        font-size: 18px;
-        margin-top: 15px;
-        margin-bottom: 30px;
-        color: #36302a;
-        text-align: center;
-      }
-
       footer p {
         color: #ffffff;
         margin: 0;
+        max-width: none;
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 2.1em;
+        }
+
+        .top-panel a {
+          padding: 8px 10px;
+          font-size: 14px;
+        }
       }
     </style>
   </head>
 
   <body>
-    <div class="top-panel">
-  <button onclick="window.location.href='index.html'">Home</button>
-  <button onclick="window.location.href='work.html'">Work</button>
-  <button onclick="window.location.href='about.html'">About</button>
-  <button onclick="window.location.href='contact.html'">Contact</button>
-</div>
-
+    <nav class="top-panel" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
 
     <header>
       <h1>About</h1>
@@ -166,18 +189,22 @@
       <section>
         <h2>Artist Statement</h2>
         <p>
-         I make stained glass pieces that focus on light, colour, and the way we experience images.
-Because I’m studying Psychology alongside my Fine Art background, I’m naturally drawn to ideas about perception, attention, and how certain visuals can create a sense of awe.
-
+          I make stained glass pieces that focus on light, colour, and the way we
+          experience images. Because I’m studying psychology alongside my Fine
+          Art background, I’m naturally drawn to ideas about perception,
+          attention, and how certain visuals can create a sense of awe.
         </p>
         <p>
-        Awe interests me as an emotion that can be triggered by light or scale, and stained glass is a good medium for that, for example when
-          light floods a space with colour and transforms it. This sense of awe is something the church harnesssed via stained glass and it's something I aim to do in a modern day context.
- 
+          Awe interests me as an emotion that can be triggered by light or
+          scale, and stained glass is a good medium for that, for example when
+          light floods a space with colour and transforms it. This sense of awe
+          is something the church harnessed via stained glass, and it’s
+          something I aim to do in a modern-day context.
         </p>
         <p>
-          I also love creating fun stained glass panels for people to enjoy in their homes. Cats, in particular, are a recurring and modernly joyful theme in my work. 
-        
+          I also love creating fun stained glass panels for people to enjoy in
+          their homes. Cats, in particular, are a recurring and modernly joyful
+          theme in my work.
         </p>
       </section>
 
@@ -186,31 +213,31 @@ Because I’m studying Psychology alongside my Fine Art background, I’m natura
       <section>
         <h2>About Me</h2>
         <p>
-          I have a BA(hons) in Fine Art Painting from UAL, and trained in glass at Morley College (Earning a Distinction) and have continued learning through glass painting, printing, etching, casting and cold working. Lately I’ve been focusing on bringing psychological and perceptual ideas into my stained glass practice by researching optogenetics and awe, and using traditional techniques to explore how colour and form affect the viewer. 
-
-
-
-    
+          I have a BA (Hons) in Fine Art Painting from UAL, trained in glass at
+          Morley College (earning a distinction), and have continued learning
+          through glass painting, printing, etching, casting, and cold working.
+          Lately I’ve been focusing on bringing psychological and perceptual
+          ideas into my stained glass practice by researching optogenetics and
+          awe, and using traditional techniques to explore how colour and form
+          affect the viewer.
         </p>
         <p>
-      
-          One example is a panel based on Penfield’s homunculus, a neurological map showing how the brain allocates space to different parts of the body. Using this model alongside strong colour and light, I wanted to show how unusual the brain’s internal “image” of us really is. 
-
+          One example is a panel based on Penfield’s homunculus, a neurological
+          map showing how the brain allocates space to different parts of the
+          body. Using this model alongside strong colour and light, I wanted to
+          show how unusual the brain’s internal “image” of us really is.
         </p>
         <p>
-         I also volunteer at the Natural History Museum, helping children learn about science through crafts, which connects well with my aim of making ideas about the mind approachable and engaging.
+          I also volunteer at the Natural History Museum, helping children learn
+          about science through crafts, which connects well with my aim of making
+          ideas about the mind approachable and engaging.
         </p>
-      
       </section>
     </main>
-    <!-- About Page Image Section -->
-    <!-- About Page Image Section -->
-    <section class="about-image">
+
+    <section class="about-image" aria-label="Featured work">
       <div class="gallery-item">
-        <img
-          src="images/1.png"
-          alt="Penfield’s Homunculus"
-        />
+        <img src="images/1.png" alt="Penfield’s Homunculus stained glass panel" />
         <div class="image-title">Penfield’s Homunculus</div>
       </div>
     </section>
