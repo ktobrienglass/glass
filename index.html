@@ -1,122 +1,138 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stained Glass Art by Katie O'Brien</title>
+    <title>Home | Katie O'Brien</title>
+    <meta
+      name="description"
+      content="Katie O'Brien is a stained glass artist exploring light, colour, awe, and perception. View featured work and portfolio."
+    />
 
-    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
     <style>
-      /* ----------------------- Desktop Styles ----------------------- */
-      .top-panel {
-        background-color: white;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 10px 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 10;
+      :root {
+        --bg: #f6f3ec;
+        --ink: #36302a;
+        --panel: #ffffff;
+        --accent: #800000;
       }
 
-      .top-panel button {
-        background-color: white;
-        color: #36302a;
-        border: none;
-        padding: 10px 20px;
-        margin-right: 15px;
-        cursor: pointer;
-        font-family: "Roboto", sans-serif;
-        font-size: 16px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-      }
-
-      .top-panel button:hover {
-        background-color: #36302a;
-        color: #f6f3ec;
+      * {
+        box-sizing: border-box;
       }
 
       body {
         font-family: "Roboto", sans-serif;
-        background-color: #f6f3ec;
-        color: #36302a;
+        background-color: var(--bg);
+        color: var(--ink);
         margin: 0;
         padding: 0;
-        padding-bottom: 60px; /* space for footer */
+        padding-bottom: 70px;
+      }
+
+      .top-panel {
+        background-color: var(--panel);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 16px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .top-panel a {
+        display: inline-block;
+        text-decoration: none;
+        color: var(--ink);
+        padding: 10px 14px;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        border-radius: 8px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+
+      .top-panel a:hover {
+        background-color: var(--ink);
+        color: var(--bg);
+      }
+
+      .top-panel a[aria-current="page"] {
+        background-color: var(--ink);
+        color: var(--bg);
       }
 
       header {
-        background-color: #f6f3ec;
-        padding: 20px;
+        padding: 96px 20px 12px;
         text-align: center;
       }
 
       h1 {
         font-family: "Merriweather", serif;
-        font-size: 2.8em;
-        color: #36302a;
-        padding-top: 40px;
-        margin-bottom: 20px; /* add space below header */
+        font-size: 2.7em;
+        margin: 0 0 6px;
+        letter-spacing: 1px;
       }
 
       #header-2 {
-        font-family: "Roboto", sans-serif;
-        font-size: 1.2em;
-        margin-top: 0;
-        margin-bottom: 40px;
-        color: #36302a;
+        font-size: 1.1em;
+        margin: 0 0 34px;
       }
 
-      /* Gallery: horizontal row, centered */
       .gallery {
-        display: flex;
-        justify-content: center;
-        gap: 80px;
-        padding: 40px;
-        margin-bottom: 120px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 50px;
+        padding: 10px 24px 40px;
+        max-width: 1100px;
+        margin: 0 auto;
       }
 
       .gallery-item {
         text-align: center;
-        max-width: 300px;
+        max-width: 340px;
+        margin: 0 auto;
       }
 
       .gallery a {
         display: inline-block;
         width: 100%;
         text-decoration: none;
+        color: inherit;
       }
 
       .gallery img {
         width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-        cursor: pointer;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        transition: transform 0.25s ease;
       }
 
       .gallery img:hover {
-        transform: scale(1.05);
+        transform: scale(1.03);
       }
 
       .image-title {
         font-family: "Merriweather", serif;
         font-weight: 700;
         font-size: 18px;
-        margin-top: 15px;
-        margin-bottom: 30px;
-        color: #36302a;
-        text-align: center;
+        margin-top: 14px;
+        margin-bottom: 6px;
       }
 
       footer {
-        background-color: #36302a;
+        background-color: var(--ink);
         text-align: center;
         padding: 10px;
         position: fixed;
@@ -130,92 +146,73 @@
         margin: 0;
       }
 
-      /* ----------------------- Mobile Styles ----------------------- */
+      @media (max-width: 900px) {
+        .gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
       @media (max-width: 600px) {
         h1 {
-          font-size: 2em;
-          padding-top: 30px;
+          font-size: 2.1em;
         }
 
         #header-2 {
           font-size: 1em;
-          margin-top: 5px;
-          margin-bottom: 20px;
+          margin-bottom: 22px;
         }
 
-        .top-panel button {
-          padding: 8px 12px;
+        .top-panel a {
+          padding: 8px 10px;
           font-size: 14px;
-          margin-right: 10px;
         }
 
         .gallery {
-          flex-direction: column;
-          gap: 20px;
-          padding: 20px;
-          margin-bottom: 60px;
-        }
-
-        .gallery-item {
-          max-width: 90%;
-          margin: 0 auto;
-        }
-
-        .image-title {
-          font-size: 16px;
-          margin-top: 10px;
-          margin-bottom: 20px;
+          grid-template-columns: 1fr;
+          gap: 22px;
+          padding: 10px 18px 34px;
         }
       }
     </style>
   </head>
 
   <body>
-    <div class="top-panel">
-      <button onclick="window.location.href='index.html'">Home</button>
-      <button onclick="window.location.href='work.html'">Work</button>
-      <button onclick="window.location.href='about.html'">About</button>
-      <button onclick="window.location.href='contact.html'">Contact</button>
-    </div>
+    <nav class="top-panel" aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
 
     <header>
       <h1>KATIE O'BRIEN</h1>
       <p id="header-2">Artist Portfolio, Stained Glass</p>
     </header>
 
-    <section class="gallery">
+    <section class="gallery" aria-label="Featured works">
       <div class="gallery-item">
-        <a href="work.html">
-          <img
-            src="images/2.png"
-            alt="Stained Glass Artwork 1"
-          />
+        <a href="work.html" aria-label="View work page">
+          <img src="images/2.png" alt="Cat Dances Whilst You Work stained glass panel" />
         </a>
         <div class="image-title">Cat Dances Whilst You Work</div>
       </div>
 
       <div class="gallery-item">
-        <a href="work.html">
-          <img
-            src="images/3.png"
-            alt="Stained Glass Artwork 2"
-          />
+        <a href="work.html" aria-label="View work page">
+          <img src="images/3.png" alt="Bubbled World stained glass panel" />
         </a>
         <div class="image-title">Bubbled World</div>
       </div>
 
       <div class="gallery-item">
-        <a href="work.html">
-          <img
-            src="images/1.png"
-            alt="Stained Glass Artwork 3"
-          />
+        <a href="work.html" aria-label="View work page">
+          <img src="images/1.png" alt="Penfield’s Homunculus stained glass panel" />
         </a>
-        <div class="image-title">Penfield's Homunculus</div>
+        <div class="image-title">Penfield’s Homunculus</div>
       </div>
     </section>
 
-    <footer id="site-footer">
+    <footer>
       <p>&copy; 2025 coded by Katie O'Brien. All Rights Reserved.</p>
     </footer>
   </body>
