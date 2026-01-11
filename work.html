@@ -1,4 +1,4 @@
-<!-- work.html -->
+<!-- work.html (gallery captions + lightbox, process images no captions) -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,11 +21,10 @@
         --ink: #36302a;
         --panel: #ffffff;
         --accent: #800000;
+        --shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
       body {
         font-family: "Roboto", sans-serif;
@@ -55,7 +54,6 @@
         text-decoration: none;
         color: var(--ink);
         padding: 10px 14px;
-        font-family: "Roboto", sans-serif;
         font-size: 16px;
         border-radius: 8px;
         transition: background-color 0.2s ease, color 0.2s ease;
@@ -108,7 +106,7 @@
       }
 
       .about-link:hover {
-        color: #000000;
+        color: #000;
       }
 
       .divider {
@@ -128,38 +126,123 @@
         margin: 0 auto;
       }
 
-      .gallery-item {
+      figure.gallery-item {
         text-align: center;
         width: 100%;
         max-width: 320px;
+        margin: 0;
       }
 
-      .gallery-item img {
+      .thumb {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: zoom-in;
+      }
+
+      .thumb img {
         width: 100%;
         height: auto;
         display: block;
         border-radius: 12px;
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        box-shadow: var(--shadow);
         transition: transform 0.25s ease;
-        cursor: pointer;
       }
 
-      .gallery-item img:hover {
-        transform: scale(1.03);
+      .thumb:hover img { transform: scale(1.03); }
+
+      figcaption {
+        margin-top: 14px;
       }
 
-      .image-title {
+      .work-title {
         font-family: "Merriweather", serif;
         font-weight: 700;
         font-size: 18px;
-        margin-top: 14px;
-        margin-bottom: 6px;
+        margin: 0 0 6px;
       }
 
-      .image-subtitle {
-        font-size: 14px;
+      .work-meta {
+        font-size: 13.5px;
+        line-height: 1.5;
         opacity: 0.9;
+        margin: 0;
+      }
+
+      /* Lightbox */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.82);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        z-index: 999;
+      }
+
+      .lightbox[aria-hidden="false"] { display: flex; }
+
+      .lightbox-inner {
+        width: min(1100px, 96vw);
+        max-height: 90vh;
+        display: grid;
+        grid-template-rows: auto auto;
+        gap: 12px;
+      }
+
+      .lightbox-imgwrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox img {
+        width: 100%;
+        height: auto;
+        max-height: 78vh;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .lightbox-caption {
+        color: #fff;
+        text-align: center;
+        line-height: 1.5;
+        padding: 0 8px;
+      }
+
+      .lightbox-caption .cap-title {
+        font-family: "Merriweather", serif;
+        font-weight: 700;
+        font-size: 18px;
         margin: 0 0 6px;
+      }
+
+      .lightbox-caption .cap-meta {
+        margin: 0;
+        font-size: 13.5px;
+        opacity: 0.92;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        background: #fff;
+        color: #000;
+        border: 0;
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+        font-size: 22px;
+        line-height: 42px;
       }
 
       footer {
@@ -179,35 +262,15 @@
       }
 
       @media (max-width: 900px) {
-        .gallery-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 26px;
-        }
+        .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
       }
 
       @media (max-width: 600px) {
-        h1 {
-          font-size: 2.1em;
-        }
-
-        h2 {
-          font-size: 1.5em;
-          margin-top: 22px;
-        }
-
-        .top-panel a {
-          padding: 8px 10px;
-          font-size: 14px;
-        }
-
-        .gallery-grid {
-          grid-template-columns: 1fr;
-          gap: 22px;
-        }
-
-        .divider {
-          width: 80%;
-        }
+        h1 { font-size: 2.1em; }
+        h2 { font-size: 1.5em; margin-top: 22px; }
+        .top-panel a { padding: 8px 10px; font-size: 14px; }
+        .gallery-grid { grid-template-columns: 1fr; gap: 22px; }
+        .divider { width: 80%; }
       }
     </style>
   </head>
@@ -240,36 +303,109 @@
 
       <section>
         <h2>Stained Glass</h2>
+
         <div class="gallery-grid">
-          <div class="gallery-item">
-            <img loading="lazy" src="images/Cat dances whilst you work.jpg" alt="Cat Dances Whilst You Work stained glass panel" />
-            <div class="image-title">Cat Dances Whilst You Work</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/Cat dances whilst you work.jpg"
+              data-title="Cat Dances Whilst You Work"
+              data-meta="Flashed glass, lead paint, enamels. 45 × 90 cm. 2025."
+              aria-label="Open image: Cat Dances Whilst You Work"
+            >
+              <img loading="lazy" src="images/Cat dances whilst you work.jpg" alt="Cat Dances Whilst You Work stained glass panel" />
+            </button>
+            <figcaption>
+              <p class="work-title">Cat Dances Whilst You Work</p>
+              <p class="work-meta">Flashed glass, lead paint, enamels. 45 × 90 cm. 2025.</p>
+            </figcaption>
+          </figure>
 
-          <div class="gallery-item">
-            <img loading="lazy" src="images/Pregnant with cat.jpg" alt="Bubbled World stained glass panel" />
-            <div class="image-title">Bubbled World</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/Pregnant with cat.jpg"
+              data-title="Bubbled World"
+              data-meta="Stained glass, lead paint. 100 × 100 cm. 2024."
+              aria-label="Open image: Bubbled World"
+            >
+              <img loading="lazy" src="images/Pregnant with cat.jpg" alt="Bubbled World stained glass panel" />
+            </button>
+            <figcaption>
+              <p class="work-title">Bubbled World</p>
+              <p class="work-meta">Stained glass, lead paint. 100 × 100 cm. 2024.</p>
+            </figcaption>
+          </figure>
 
-          <div class="gallery-item">
-            <img loading="lazy" src="images/Penfields Harmunculus.jpg" alt="Penfield’s Homunculus stained glass panel" />
-            <div class="image-title">Penfield’s Homunculus</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/Penfields Harmunculus.jpg"
+              data-title="Penfield’s Homunculus"
+              data-meta="Stained glass, lead paint, enamels. 50 × 90 cm. 2025."
+              aria-label="Open image: Penfield’s Homunculus"
+            >
+              <img loading="lazy" src="images/Penfields Harmunculus.jpg" alt="Penfield’s Homunculus stained glass panel" />
+            </button>
+            <figcaption>
+              <p class="work-title">Penfield’s Homunculus</p>
+              <p class="work-meta">Stained glass, lead paint, enamels. 50 × 90 cm. 2025.</p>
+            </figcaption>
+          </figure>
 
-          <div class="gallery-item">
-            <img loading="lazy" src="images/Skulls in your home.jpg" alt="Skulls in Your Home stained glass panel" />
-            <div class="image-title">Skulls in Your Home</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/Skulls in your home.jpg"
+              data-title="Skulls in Your Home"
+              data-meta="Window panel. Stained glass, lead paint. 100 × 30 cm (approx.). 2025."
+              aria-label="Open image: Skulls in Your Home"
+            >
+              <img loading="lazy" src="images/Skulls in your home.jpg" alt="Skulls in Your Home stained glass panel" />
+            </button>
+            <figcaption>
+              <p class="work-title">Skulls in Your Home</p>
+              <p class="work-meta">Window panel. Stained glass, lead paint. 100 × 30 cm (approx.). 2025.</p>
+            </figcaption>
+          </figure>
 
-          <div class="gallery-item">
-            <img loading="lazy" src="images/Relience.jpg" alt="I’ve Got Your Back stained glass panel" />
-            <div class="image-title">I’ve Got Your Back</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/Relience.jpg"
+              data-title="I’ve Got Your Back"
+              data-meta="Stained glass, lead paint. 30 × 30 cm. 2024."
+              aria-label="Open image: I’ve Got Your Back"
+            >
+              <img loading="lazy" src="images/Relience.jpg" alt="I’ve Got Your Back stained glass panel" />
+            </button>
+            <figcaption>
+              <p class="work-title">I’ve Got Your Back</p>
+              <p class="work-meta">Stained glass, lead paint. 30 × 30 cm. 2024.</p>
+            </figcaption>
+          </figure>
 
-          <div class="gallery-item">
-            <img loading="lazy" src="images/theswirl.jpg" alt="The Swirl stained glass panel" />
-            <div class="image-title">The Swirl</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/theswirl.jpg"
+              data-title="The Swirl"
+              data-meta="Stained glass, paint. 50 × 90 cm. 2024."
+              aria-label="Open image: The Swirl"
+            >
+              <img loading="lazy" src="images/theswirl.jpg" alt="The Swirl stained glass panel" />
+            </button>
+            <figcaption>
+              <p class="work-title">The Swirl</p>
+              <p class="work-meta">Stained glass, paint. 50 × 90 cm. 2024.</p>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -277,36 +413,109 @@
 
       <section>
         <h2>Paintings</h2>
+
         <div class="gallery-grid">
-          <div class="gallery-item">
-            <img loading="lazy" src="images/Golden Pipes.jpg" alt="Two Pipes painting" />
-            <div class="image-title">Two Pipes</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/Golden Pipes.jpg"
+              data-title="Two Pipes"
+              data-meta="Acrylic, metal, string on canvas. 100 × 100 cm. 2025."
+              aria-label="Open image: Two Pipes"
+            >
+              <img loading="lazy" src="images/Golden Pipes.jpg" alt="Two Pipes painting" />
+            </button>
+            <figcaption>
+              <p class="work-title">Two Pipes</p>
+              <p class="work-meta">Acrylic, metal, string on canvas. 100 × 100 cm. 2025.</p>
+            </figcaption>
+          </figure>
 
-          <div class="gallery-item">
-            <img loading="lazy" src="images/pregnant with cat paintin.jpg" alt="Bubbled World painting" />
-            <div class="image-title">Bubbled World</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/pregnant with cat paintin.jpg"
+              data-title="Bubbled World"
+              data-meta="Acrylic on canvas. 90 × 90 cm. 2024."
+              aria-label="Open image: Bubbled World painting"
+            >
+              <img loading="lazy" src="images/pregnant with cat paintin.jpg" alt="Bubbled World painting" />
+            </button>
+            <figcaption>
+              <p class="work-title">Bubbled World</p>
+              <p class="work-meta">Acrylic on canvas. 90 × 90 cm. 2024.</p>
+            </figcaption>
+          </figure>
 
-          <div class="gallery-item">
-            <img loading="lazy" src="images/Cyprus.jpeg" alt="Cyprus painting" />
-            <div class="image-title">Cyprus</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/Cyprus.jpeg"
+              data-title="Cyprus"
+              data-meta="Acrylic on canvas. 60 × 60 cm. 2023."
+              aria-label="Open image: Cyprus"
+            >
+              <img loading="lazy" src="images/Cyprus.jpeg" alt="Cyprus painting" />
+            </button>
+            <figcaption>
+              <p class="work-title">Cyprus</p>
+              <p class="work-meta">Acrylic on canvas. 60 × 60 cm. 2023.</p>
+            </figcaption>
+          </figure>
 
-          <div class="gallery-item">
-            <img loading="lazy" src="images/a happy pink bird.jpeg" alt="Happy Pink Bird painting" />
-            <div class="image-title">Happy Pink Bird</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/a happy pink bird.jpeg"
+              data-title="Happy Pink Bird"
+              data-meta="Acrylic on sanded wooden board. 40 × 40 cm. 2023."
+              aria-label="Open image: Happy Pink Bird"
+            >
+              <img loading="lazy" src="images/a happy pink bird.jpeg" alt="Happy Pink Bird painting" />
+            </button>
+            <figcaption>
+              <p class="work-title">Happy Pink Bird</p>
+              <p class="work-meta">Acrylic on sanded wooden board. 40 × 40 cm. 2023.</p>
+            </figcaption>
+          </figure>
 
-          <div class="gallery-item">
-            <img loading="lazy" src="images/they keep dancing.jpg" alt="They Keep Dancing painting" />
-            <div class="image-title">They Keep Dancing</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/they keep dancing.jpg"
+              data-title="They Keep Dancing"
+              data-meta="Acrylic on canvas. 50 × 90 cm. 2023."
+              aria-label="Open image: They Keep Dancing"
+            >
+              <img loading="lazy" src="images/they keep dancing.jpg" alt="They Keep Dancing painting" />
+            </button>
+            <figcaption>
+              <p class="work-title">They Keep Dancing</p>
+              <p class="work-meta">Acrylic on canvas. 50 × 90 cm. 2023.</p>
+            </figcaption>
+          </figure>
 
-          <div class="gallery-item">
-            <img loading="lazy" src="images/Portrait2.jpg" alt="Portrait painting" />
-            <div class="image-title">Portrait</div>
-          </div>
+          <figure class="gallery-item">
+            <button
+              class="thumb"
+              type="button"
+              data-full="images/Portrait2.jpg"
+              data-title="Portrait"
+              data-meta="Acrylic on raw canvas. 20 × 20 cm. 2024."
+              aria-label="Open image: Portrait"
+            >
+              <img loading="lazy" src="images/Portrait2.jpg" alt="Portrait painting" />
+            </button>
+            <figcaption>
+              <p class="work-title">Portrait</p>
+              <p class="work-meta">Acrylic on raw canvas. 20 × 20 cm. 2024.</p>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -315,20 +524,76 @@
       <section>
         <h2>Process</h2>
         <div class="gallery-grid">
-          <div class="gallery-item"><img loading="lazy" src="images/woman2.jpg" alt="Process image 1" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/Cat.jpg" alt="Process image 2" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/greenglass.jpg" alt="Process image 3" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/brain2.jpg" alt="Process image 4" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/brain.jpg" alt="Process image 5" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/brain3.jpg" alt="Process image 6" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/cat2.jpg" alt="Process image 7" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/cat4.jpg" alt="Process image 8" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/skulls.jpg" alt="Process image 9" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/blowing.jpg" alt="Process image 10" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/back.jpg" alt="Process image 11" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/woman1.jpg" alt="Process image 12" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/catagain.jpg" alt="Process image 13" /></div>
-          <div class="gallery-item"><img loading="lazy" src="images/Skulls being made.jpeg" alt="Process image 14" /></div>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/woman2.jpg" data-title="Process" data-meta="" aria-label="Open process image 1">
+              <img loading="lazy" src="images/woman2.jpg" alt="Process image 1" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/Cat.jpg" data-title="Process" data-meta="" aria-label="Open process image 2">
+              <img loading="lazy" src="images/Cat.jpg" alt="Process image 2" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/greenglass.jpg" data-title="Process" data-meta="" aria-label="Open process image 3">
+              <img loading="lazy" src="images/greenglass.jpg" alt="Process image 3" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/brain2.jpg" data-title="Process" data-meta="" aria-label="Open process image 4">
+              <img loading="lazy" src="images/brain2.jpg" alt="Process image 4" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/brain.jpg" data-title="Process" data-meta="" aria-label="Open process image 5">
+              <img loading="lazy" src="images/brain.jpg" alt="Process image 5" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/brain3.jpg" data-title="Process" data-meta="" aria-label="Open process image 6">
+              <img loading="lazy" src="images/brain3.jpg" alt="Process image 6" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/cat2.jpg" data-title="Process" data-meta="" aria-label="Open process image 7">
+              <img loading="lazy" src="images/cat2.jpg" alt="Process image 7" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/cat4.jpg" data-title="Process" data-meta="" aria-label="Open process image 8">
+              <img loading="lazy" src="images/cat4.jpg" alt="Process image 8" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/skulls.jpg" data-title="Process" data-meta="" aria-label="Open process image 9">
+              <img loading="lazy" src="images/skulls.jpg" alt="Process image 9" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/blowing.jpg" data-title="Process" data-meta="" aria-label="Open process image 10">
+              <img loading="lazy" src="images/blowing.jpg" alt="Process image 10" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/back.jpg" data-title="Process" data-meta="" aria-label="Open process image 11">
+              <img loading="lazy" src="images/back.jpg" alt="Process image 11" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/woman1.jpg" data-title="Process" data-meta="" aria-label="Open process image 12">
+              <img loading="lazy" src="images/woman1.jpg" alt="Process image 12" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/catagain.jpg" data-title="Process" data-meta="" aria-label="Open process image 13">
+              <img loading="lazy" src="images/catagain.jpg" alt="Process image 13" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/Skulls being made.jpeg" data-title="Process" data-meta="" aria-label="Open process image 14">
+              <img loading="lazy" src="images/Skulls being made.jpeg" alt="Process image 14" />
+            </button>
+          </figure>
         </div>
       </section>
     </main>
@@ -336,5 +601,69 @@
     <footer>
       <p>&copy; 2025 coded by Katie O'Brien. All Rights Reserved.</p>
     </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+      <div class="lightbox-inner">
+        <div class="lightbox-imgwrap">
+          <button class="lightbox-close" type="button" id="lbClose" aria-label="Close">×</button>
+          <img id="lbImg" alt="" />
+        </div>
+        <div class="lightbox-caption">
+          <p class="cap-title" id="lbTitle"></p>
+          <p class="cap-meta" id="lbMeta"></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const lightbox = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lbImg");
+      const lbTitle = document.getElementById("lbTitle");
+      const lbMeta = document.getElementById("lbMeta");
+      const lbClose = document.getElementById("lbClose");
+
+      function openLightbox(src, title, meta, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || title || "Artwork image";
+        lbTitle.textContent = title || "";
+        lbMeta.textContent = meta || "";
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        lbClose.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.setAttribute("aria-hidden", "true");
+        lbImg.src = "";
+        lbTitle.textContent = "";
+        lbMeta.textContent = "";
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll(".thumb").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const img = btn.querySelector("img");
+          openLightbox(
+            btn.getAttribute("data-full"),
+            btn.getAttribute("data-title"),
+            btn.getAttribute("data-meta"),
+            img ? img.getAttribute("alt") : ""
+          );
+        });
+      });
+
+      lbClose.addEventListener("click", closeLightbox);
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
+          closeLightbox();
+        }
+      });
+    </script>
   </body>
 </html>
