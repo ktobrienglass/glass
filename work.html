@@ -1,4 +1,3 @@
-<!-- work.html (gallery captions + lightbox, process images no captions) -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -174,7 +173,7 @@
       .lightbox {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.82);
+        background: rgba(0, 0, 0, 0.86);
         display: none;
         align-items: center;
         justify-content: center;
@@ -229,20 +228,53 @@
         opacity: 0.92;
       }
 
-      .lightbox-close {
+      .lightbox-close,
+      .lightbox-prev,
+      .lightbox-next {
         position: absolute;
-        top: -12px;
-        right: -12px;
-        background: #fff;
+        background: rgba(255, 255, 255, 0.95);
         color: #000;
         border: 0;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox-close {
+        top: -12px;
+        right: -12px;
         width: 42px;
         height: 42px;
         border-radius: 999px;
-        cursor: pointer;
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
         font-size: 22px;
         line-height: 42px;
+      }
+
+      .lightbox-prev,
+      .lightbox-next {
+        top: 50%;
+        transform: translateY(-50%);
+        width: 52px;
+        height: 52px;
+        border-radius: 999px;
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .lightbox-prev {
+        left: 16px;
+      }
+
+      .lightbox-next {
+        right: 16px;
+      }
+
+      .lightbox-prev:hover,
+      .lightbox-next:hover,
+      .lightbox-close:hover {
+        background: #ffffff;
       }
 
       footer {
@@ -271,6 +303,16 @@
         .top-panel a { padding: 8px 10px; font-size: 14px; }
         .gallery-grid { grid-template-columns: 1fr; gap: 22px; }
         .divider { width: 80%; }
+
+        .lightbox-prev,
+        .lightbox-next {
+          width: 44px;
+          height: 44px;
+          font-size: 24px;
+        }
+
+        .lightbox-prev { left: 8px; }
+        .lightbox-next { right: 8px; }
       }
     </style>
   </head>
@@ -412,6 +454,84 @@
       <hr class="divider" />
 
       <section>
+        <h2>Process</h2>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/woman2.jpg" data-title="Process" data-meta="" aria-label="Open process image 1">
+              <img loading="lazy" src="images/woman2.jpg" alt="Process image 1" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/Cat.jpg" data-title="Process" data-meta="" aria-label="Open process image 2">
+              <img loading="lazy" src="images/Cat.jpg" alt="Process image 2" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/greenglass.jpg" data-title="Process" data-meta="" aria-label="Open process image 3">
+              <img loading="lazy" src="images/greenglass.jpg" alt="Process image 3" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/brain2.jpg" data-title="Process" data-meta="" aria-label="Open process image 4">
+              <img loading="lazy" src="images/brain2.jpg" alt="Process image 4" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/brain.jpg" data-title="Process" data-meta="" aria-label="Open process image 5">
+              <img loading="lazy" src="images/brain.jpg" alt="Process image 5" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/brain3.jpg" data-title="Process" data-meta="" aria-label="Open process image 6">
+              <img loading="lazy" src="images/brain3.jpg" alt="Process image 6" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/cat2.jpg" data-title="Process" data-meta="" aria-label="Open process image 7">
+              <img loading="lazy" src="images/cat2.jpg" alt="Process image 7" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/cat4.jpg" data-title="Process" data-meta="" aria-label="Open process image 8">
+              <img loading="lazy" src="images/cat4.jpg" alt="Process image 8" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/skulls.jpg" data-title="Process" data-meta="" aria-label="Open process image 9">
+              <img loading="lazy" src="images/skulls.jpg" alt="Process image 9" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/blowing.jpg" data-title="Process" data-meta="" aria-label="Open process image 10">
+              <img loading="lazy" src="images/blowing.jpg" alt="Process image 10" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/back.jpg" data-title="Process" data-meta="" aria-label="Open process image 11">
+              <img loading="lazy" src="images/back.jpg" alt="Process image 11" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/woman1.jpg" data-title="Process" data-meta="" aria-label="Open process image 12">
+              <img loading="lazy" src="images/woman1.jpg" alt="Process image 12" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/catagain.jpg" data-title="Process" data-meta="" aria-label="Open process image 13">
+              <img loading="lazy" src="images/catagain.jpg" alt="Process image 13" />
+            </button>
+          </figure>
+          <figure class="gallery-item">
+            <button class="thumb" type="button" data-full="images/Skulls being made.jpeg" data-title="Process" data-meta="" aria-label="Open process image 14">
+              <img loading="lazy" src="images/Skulls being made.jpeg" alt="Process image 14" />
+            </button>
+          </figure>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <section>
         <h2>Paintings</h2>
 
         <div class="gallery-grid">
@@ -518,84 +638,6 @@
           </figure>
         </div>
       </section>
-
-      <hr class="divider" />
-
-      <section>
-        <h2>Process</h2>
-        <div class="gallery-grid">
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/woman2.jpg" data-title="Process" data-meta="" aria-label="Open process image 1">
-              <img loading="lazy" src="images/woman2.jpg" alt="Process image 1" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/Cat.jpg" data-title="Process" data-meta="" aria-label="Open process image 2">
-              <img loading="lazy" src="images/Cat.jpg" alt="Process image 2" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/greenglass.jpg" data-title="Process" data-meta="" aria-label="Open process image 3">
-              <img loading="lazy" src="images/greenglass.jpg" alt="Process image 3" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/brain2.jpg" data-title="Process" data-meta="" aria-label="Open process image 4">
-              <img loading="lazy" src="images/brain2.jpg" alt="Process image 4" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/brain.jpg" data-title="Process" data-meta="" aria-label="Open process image 5">
-              <img loading="lazy" src="images/brain.jpg" alt="Process image 5" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/brain3.jpg" data-title="Process" data-meta="" aria-label="Open process image 6">
-              <img loading="lazy" src="images/brain3.jpg" alt="Process image 6" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/cat2.jpg" data-title="Process" data-meta="" aria-label="Open process image 7">
-              <img loading="lazy" src="images/cat2.jpg" alt="Process image 7" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/cat4.jpg" data-title="Process" data-meta="" aria-label="Open process image 8">
-              <img loading="lazy" src="images/cat4.jpg" alt="Process image 8" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/skulls.jpg" data-title="Process" data-meta="" aria-label="Open process image 9">
-              <img loading="lazy" src="images/skulls.jpg" alt="Process image 9" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/blowing.jpg" data-title="Process" data-meta="" aria-label="Open process image 10">
-              <img loading="lazy" src="images/blowing.jpg" alt="Process image 10" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/back.jpg" data-title="Process" data-meta="" aria-label="Open process image 11">
-              <img loading="lazy" src="images/back.jpg" alt="Process image 11" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/woman1.jpg" data-title="Process" data-meta="" aria-label="Open process image 12">
-              <img loading="lazy" src="images/woman1.jpg" alt="Process image 12" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/catagain.jpg" data-title="Process" data-meta="" aria-label="Open process image 13">
-              <img loading="lazy" src="images/catagain.jpg" alt="Process image 13" />
-            </button>
-          </figure>
-          <figure class="gallery-item">
-            <button class="thumb" type="button" data-full="images/Skulls being made.jpeg" data-title="Process" data-meta="" aria-label="Open process image 14">
-              <img loading="lazy" src="images/Skulls being made.jpeg" alt="Process image 14" />
-            </button>
-          </figure>
-        </div>
-      </section>
     </main>
 
     <footer>
@@ -607,7 +649,9 @@
       <div class="lightbox-inner">
         <div class="lightbox-imgwrap">
           <button class="lightbox-close" type="button" id="lbClose" aria-label="Close">×</button>
+          <button class="lightbox-prev" type="button" id="lbPrev" aria-label="Previous image">‹</button>
           <img id="lbImg" alt="" />
+          <button class="lightbox-next" type="button" id="lbNext" aria-label="Next image">›</button>
         </div>
         <div class="lightbox-caption">
           <p class="cap-title" id="lbTitle"></p>
@@ -622,15 +666,23 @@
       const lbTitle = document.getElementById("lbTitle");
       const lbMeta = document.getElementById("lbMeta");
       const lbClose = document.getElementById("lbClose");
+      const lbPrev = document.getElementById("lbPrev");
+      const lbNext = document.getElementById("lbNext");
 
-      function openLightbox(src, title, meta, alt) {
-        lbImg.src = src;
-        lbImg.alt = alt || title || "Artwork image";
-        lbTitle.textContent = title || "";
-        lbMeta.textContent = meta || "";
+      const thumbs = Array.from(document.querySelectorAll(".thumb"));
+      let currentIndex = 0;
+
+      function openLightboxByIndex(index) {
+        currentIndex = index;
+        const btn = thumbs[currentIndex];
+        const img = btn.querySelector("img");
+
+        lbImg.src = btn.getAttribute("data-full");
+        lbImg.alt = img ? img.getAttribute("alt") : "Artwork image";
+        lbTitle.textContent = btn.getAttribute("data-title") || "";
+        lbMeta.textContent = btn.getAttribute("data-meta") || "";
         lightbox.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
-        lbClose.focus();
       }
 
       function closeLightbox() {
@@ -641,27 +693,35 @@
         document.body.style.overflow = "";
       }
 
-      document.querySelectorAll(".thumb").forEach((btn) => {
+      function showNext() {
+        currentIndex = (currentIndex + 1) % thumbs.length;
+        openLightboxByIndex(currentIndex);
+      }
+
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+        openLightboxByIndex(currentIndex);
+      }
+
+      thumbs.forEach((btn, index) => {
         btn.addEventListener("click", () => {
-          const img = btn.querySelector("img");
-          openLightbox(
-            btn.getAttribute("data-full"),
-            btn.getAttribute("data-title"),
-            btn.getAttribute("data-meta"),
-            img ? img.getAttribute("alt") : ""
-          );
+          openLightboxByIndex(index);
         });
       });
 
       lbClose.addEventListener("click", closeLightbox);
+      lbNext.addEventListener("click", showNext);
+      lbPrev.addEventListener("click", showPrev);
 
       lightbox.addEventListener("click", (e) => {
         if (e.target === lightbox) closeLightbox();
       });
 
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
-          closeLightbox();
+        if (lightbox.getAttribute("aria-hidden") === "false") {
+          if (e.key === "Escape") closeLightbox();
+          if (e.key === "ArrowRight") showNext();
+          if (e.key === "ArrowLeft") showPrev();
         }
       });
     </script>
